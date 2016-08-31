@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Registreer</title>
 </head>
 <body>
-
+<form method="post" action="/login">
+    <p>Gebruikersnaam</p>
+    <input type="text" name="gebruikersnaam">
+    <br>
+    <p>Wachtwoord</p>
+    <input type="password" name="wachtwoord">
+    <input type="submit" value="Registreer">
+    <br>
+    <br>
+    <select>
+        <option value="huurder">huurder</option>
+        <option value="verhuurder">verhuurder</option>
+    </select>
+</form>
 </body>
 </html>
