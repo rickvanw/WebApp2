@@ -8,13 +8,15 @@ import java.io.IOException;
 /**
  * Created by rickv on 31-8-2016.
  */
-@WebServlet(name = "ShowRoomsServlet")
+@WebServlet("/login")
 public class ShowRoomsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");
+        response.getWriter().println(username);
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        
     }
 }
