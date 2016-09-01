@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * Created by rickv on 31-8-2016.
  */
-@WebServlet(name = "SearchRoomServlet")
+@WebServlet("/SearchRoomServlet")
 public class SearchRoomServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
