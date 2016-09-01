@@ -14,4 +14,13 @@ public class Kamer {
         this.huurprijs = huurprijs;
         this.plaats = plaats;
     }
+
+    @Override
+    public String toString() {
+        return "Kamer{" +
+                "vierkantemeters=" + vierkantemeters +
+                ", huurprijs=" + huurprijs +
+                ", plaats='" + plaats + '\'' +
+                '}';
+    }
 }

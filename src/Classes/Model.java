@@ -9,8 +9,8 @@ public class Model {
 
     private static Model instance;
 
-    private ArrayList<Kamer> kamers;
-    private ArrayList<Gebruiker> gebruikers;
+    private static ArrayList<Kamer> kamers;
+    private static ArrayList<Gebruiker> gebruikers;
 
 
     private Model() {
@@ -23,6 +23,15 @@ public class Model {
         if (instance == null) {
             instance = new Model();
         }
+        //dummy kamer
+        Kamer kamer = new Kamer(10,10,"hengelo");
+        kamers.add(kamer);
+
+        //dummy gebruiker
+        Gebruiker gebruiker = new Gebruiker("harry", "test");
+        gebruikers.add(gebruiker);
+
+
         return instance;
     }
 
