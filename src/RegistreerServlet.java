@@ -41,6 +41,7 @@ public class RegistreerServlet extends HttpServlet {
         }else if (legeInput){
             response.sendRedirect("fouteinlog.html");
         }else{
+
             response.sendRedirect("login.html");
         }
 

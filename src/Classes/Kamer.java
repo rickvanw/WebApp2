@@ -15,6 +15,18 @@ public class Kamer {
         this.plaats = plaats;
     }
 
+    public int getVierkantemeters() {
+        return vierkantemeters;
+    }
+
+    public double getHuurprijs() {
+        return huurprijs;
+    }
+
+    public String getPlaats() {
+        return plaats;
+    }
+
     @Override
     public String toString() {
         return "Kamer{" +
