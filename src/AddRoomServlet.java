@@ -1,3 +1,4 @@
+import Classes.Kamer;
 import Classes.Model;
 
 import javax.servlet.ServletException;
@@ -6,23 +7,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
- * Created by rickv on 31-8-2016.
+ * Created by rubenassink on 01-09-16.
  */
-@WebServlet("/ShowRoomServlet")
-public class ShowRoomsServlet extends HttpServlet {
+@WebServlet("/AddRoomServlet")
+public class AddRoomServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        ArrayList rooms = Model.getInstance().getkamers();
+        int vierkanteMeter = request.getIntHeader("vierkantemeters");
+        double huurprijs = request.getIntHeader("huurprijs");
+        String plaats = request.getParameter("plaats");
 
-        for (int i = 0; i < rooms.size(); i++) {
-            response.getWriter().println(rooms.get(i).toString());
-        }
+        Model model = Model.getInstance();
+        Kamer kamer = new Kamer(vierkanteMeter, huurprijs, plaats);
 
-//        String plaats = request.getParameter("plaats");
-//        response.getWriter().println(plaats);
+        model.addKamer(kamer);
+
 
     }
 
