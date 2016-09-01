@@ -7,11 +7,36 @@ import java.util.ArrayList;
  */
 public class Model {
 
-    private ArrayList<Kamer> kamers = new ArrayList<>();
-    private ArrayList<Gebruiker> Gebruikers = new ArrayList<>();
+    private static Model instance;
+
+    private ArrayList<Kamer> kamers;
+    private ArrayList<Gebruiker> gebruikers;
+
+
+    private Model() {
+        kamers = new ArrayList<>();
+        gebruikers = new ArrayList<>();
+    }
+
+
+    public static Model getInstance() {
+        if (instance == null) {
+            instance = new Model();
+        }
+        return instance;
+    }
+
+    public ArrayList getUsers() {
+        return gebruikers;
+    }
+
+    public ArrayList getRooms() {
+        return kamers;
+    }
+
 
     public void addUser(Gebruiker gebruiker) {
-        Gebruikers.add(gebruiker);
+        gebruikers.add(gebruiker);
     }
 
 }
