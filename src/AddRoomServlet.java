@@ -15,13 +15,16 @@ import java.io.IOException;
 public class AddRoomServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        Model model = Model.getInstance();
+
         int vierkanteMeter = request.getIntHeader("vierkantemeters");
         double huurprijs = request.getIntHeader("huurprijs");
         String plaats = request.getParameter("plaats");
 
-        Model model = Model.getInstance();
+        // Create room with the recieved parameters
         Kamer kamer = new Kamer(vierkanteMeter, huurprijs, plaats);
 
+        // Add room to Model
         model.addKamer(kamer);
 
 

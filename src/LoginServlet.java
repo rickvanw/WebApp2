@@ -9,7 +9,7 @@ import java.io.IOException;
  * Created by rickv on 30-8-2016.
  */
 @WebServlet("/login")
-public class Servlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String gebruikersnaam = request.getParameter("gebruikersnaam");
         String wachtwoord = request.getParameter("wachtwoord");

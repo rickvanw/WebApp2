@@ -17,12 +17,10 @@ public class ShowRoomsServlet extends HttpServlet {
 
         ArrayList rooms = Model.getInstance().getkamers();
 
+        // Prints all the rooms (toString)
         for (int i = 0; i < rooms.size(); i++) {
             response.getWriter().println(rooms.get(i).toString());
         }
-
-//        String plaats = request.getParameter("plaats");
-//        response.getWriter().println(plaats);
 
     }
 
