@@ -26,8 +26,6 @@ public class AddRoomServlet extends HttpServlet {
 
         // Add room to Model
         model.addKamer(kamer);
-
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

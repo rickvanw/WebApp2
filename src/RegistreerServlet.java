@@ -19,27 +19,33 @@ public class RegistreerServlet extends HttpServlet {
         String gebruikersnaam = request.getParameter("gebruikersnaam");
         String wachtwoord = request.getParameter("wachtwoord");
         boolean legeInput = false;
+        boolean exists = false;
 
         // Check of gebruikersnaam / wachtwoord velden leeg zijn
         if (gebruikersnaam.isEmpty() || wachtwoord.isEmpty()){
             legeInput = true;
-        }
+        }else {
 
-        // TODO Checken of gebruiker al bestaat
+            ArrayList<Gebruiker> gebruikers = Model.getInstance().getGebruikers();
 
-        ArrayList<Gebruiker> gebruikers = Model.getInstance().getGebruikers();
-        boolean exists = false;
+            for (int i = 0; i < gebruikers.size(); i++) {
 
-        for (int i = 0; i < gebruikers.size(); i++) {
+                if (gebruikers.get(i).getGebruikersnaam().equals(gebruikersnaam)) {
+                    exists = true;
+                }
+            }
 
-            if(gebruikers.get(i).getGebruikersnaam().equals(gebruikersnaam)){
-                exists = true;
+            if(exists == false){
+                Gebruiker gebruiker = new Gebruiker(gebruikersnaam, wachtwoord);
+                Model.getInstance().addUser(gebruiker);
             }
         }
-        if(exists) {
-            response.sendRedirect("registratiefout.html");
-        }else if (legeInput){
+
+        // Verwijzingen naar juiste html pagina's
+        if(legeInput) {
             response.sendRedirect("fouteinlog.html");
+        }else if (exists){
+            response.sendRedirect("registratiefout.html");
         }else{
 
             response.sendRedirect("login.html");
