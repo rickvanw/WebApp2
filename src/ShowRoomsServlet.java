@@ -17,19 +17,22 @@ import java.util.DoubleSummaryStatistics;
 public class ShowRoomsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        ArrayList<Kamer> rooms = Model.getInstance().getkamers();
+        ArrayList<Kamer> kamer_list = ((ArrayList<Kamer>) getServletContext().getAttribute("kamers"));
 
-        int vierkandeMeter = request.getIntHeader("vierkante meter");
-        double maximaleHuurprijs = request.getIntHeader("maximale huurprijs");
+        int vierkanteMeter = Integer.parseInt(request.getParameter("vierkantemeter"));
+        Double maximaleHuurprijs = Double.parseDouble(request.getParameter("maximalehuurprijs"));
         String plaats = request.getParameter("plaats");
 
-        
+        //response.getWriter().println(vierkanteMeter + " test");
+        //response.getWriter().println(maximaleHuurprijs + " test2");
+
+
         // Prints all the rooms (toString)
-        for (int i = 0; i < rooms.size(); i++) {
-            if(rooms.get(i).getVierkantemeters() >= vierkandeMeter) {
-            }   if(rooms.get(i).getHuurprijs() <= maximaleHuurprijs) {
-                    if(rooms.get(i).getPlaats().equalsIgnoreCase(plaats)) {
-                        response.getWriter().println(rooms.get(i));
+        for (int i = 0; i < kamer_list.size(); i++) {
+            if(kamer_list.get(i).getVierkantemeters() == vierkanteMeter) {
+            }   if(kamer_list.get(i).getHuurprijs() <= maximaleHuurprijs) {
+                    if(kamer_list.get(i).getPlaats().equalsIgnoreCase(plaats)) {
+                        response.getWriter().println(kamer_list.get(i).toString());
                     }
             }
         }

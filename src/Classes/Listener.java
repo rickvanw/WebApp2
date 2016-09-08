@@ -31,8 +31,14 @@ public class Listener implements ServletContextListener,
         user_list.add(new Gebruiker("wouter", "secret"));
         user_list.add(new Gebruiker("Henk", "secret"));
         user_list.add(new Gebruiker("Jan", "secret"));
+
+        ArrayList<Kamer> kamer_list = new ArrayList<>();
+        kamer_list.add(new Kamer(10,10,"hengelo"));
+        kamer_list.add(new Kamer(19,2,"enschede"));
+        kamer_list.add(new Kamer(130,13,"glanerbrug"));
         
         sce.getServletContext().setAttribute("users", user_list);
+        sce.getServletContext().setAttribute("kamers", kamer_list);
     }
 
     public void contextDestroyed(ServletContextEvent sce) {

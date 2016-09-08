@@ -19,6 +19,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         response.getWriter().println(gebruikersnaam);
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
