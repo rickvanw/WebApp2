@@ -21,9 +21,11 @@ public class SearchRoomServlet extends HttpServlet {
         String plaats = request.getParameter("plaats");
 
 
-        if (vierkanteMeter == 0 || maximaleHuurprijs == 0 || plaats.isEmpty()){
-            response.sendRedirect("fouteinlog.html");
+        if (vierkanteMeter == 0 || maximaleHuurprijs == 0 || plaats == null || plaats.isEmpty()){
+            response.getWriter().println("Fill every field");
         }
+
+        int amountResults = 0;
 
         // Prints all the rooms (toString)
         for (int i = 0; i < kamer_list.size(); i++) {
@@ -31,8 +33,13 @@ public class SearchRoomServlet extends HttpServlet {
             }   if(kamer_list.get(i).getHuurprijs() <= maximaleHuurprijs) {
                 if(kamer_list.get(i).getPlaats().equalsIgnoreCase(plaats)) {
                     response.getWriter().println(kamer_list.get(i).toString());
+                    amountResults++;
                 }
             }
+        }
+
+        if(amountResults==0){
+            response.getWriter().println("No results where found");
         }
 
     }

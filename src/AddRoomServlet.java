@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by rubenassink on 01-09-16.
@@ -15,17 +16,20 @@ import java.io.IOException;
 public class AddRoomServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Model model = Model.getInstance();
+        ArrayList<Kamer> kamer_list = ((ArrayList<Kamer>) getServletContext().getAttribute("kamers"));
 
-        int vierkanteMeter = request.getIntHeader("vierkantemeters");
-        double huurprijs = request.getIntHeader("huurprijs");
+        int vierkanteMeter = Integer.parseInt(request.getParameter("vierkantemeters"));
+        double huurprijs = Double.parseDouble(request.getParameter("huurprijs"));
         String plaats = request.getParameter("plaats");
 
         // Create room with the recieved parameters
         Kamer kamer = new Kamer(vierkanteMeter, huurprijs, plaats);
 
-        // Add room to Model
-        model.addKamer(kamer);
+        // Add room to Context
+        kamer_list.add(kamer);
+
+        response.sendRedirect("huurder.html");
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
