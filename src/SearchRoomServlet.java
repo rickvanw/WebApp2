@@ -14,6 +14,26 @@ import java.util.ArrayList;
 @WebServlet("/SearchRoomServlet")
 public class SearchRoomServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArrayList<Kamer> kamer_list = ((ArrayList<Kamer>) getServletContext().getAttribute("kamers"));
+
+        int vierkanteMeter = Integer.parseInt(request.getParameter("vierkantemeter"));
+        Double maximaleHuurprijs = Double.parseDouble(request.getParameter("maximalehuurprijs"));
+        String plaats = request.getParameter("plaats");
+
+
+        if (vierkanteMeter == 0 || maximaleHuurprijs == 0 || plaats.isEmpty()){
+            response.sendRedirect("fouteinlog.html");
+        }
+
+        // Prints all the rooms (toString)
+        for (int i = 0; i < kamer_list.size(); i++) {
+            if(kamer_list.get(i).getVierkantemeters() == vierkanteMeter) {
+            }   if(kamer_list.get(i).getHuurprijs() <= maximaleHuurprijs) {
+                if(kamer_list.get(i).getPlaats().equalsIgnoreCase(plaats)) {
+                    response.getWriter().println(kamer_list.get(i).toString());
+                }
+            }
+        }
 
     }
 
