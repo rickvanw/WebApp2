@@ -9,13 +9,18 @@ import java.io.IOException;
 /**
  * Created by rubenassink on 09-09-16.
  */
-@WebServlet("/home")
-public class HomeServlet extends HttpServlet {
+@WebServlet("/logout")
+public class LogoutServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/homeHuurder.html").forward(request, response);
+
+        HttpSession session = request.getSession();
+        session.invalidate();
+
+        response.sendRedirect("login.html");
+
     }
 }

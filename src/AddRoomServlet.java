@@ -30,6 +30,8 @@ public class AddRoomServlet extends HttpServlet {
 
         response.sendRedirect("huurder.html");
 
+
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

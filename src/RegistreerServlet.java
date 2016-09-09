@@ -17,6 +17,7 @@ import java.util.Arrays;
 @WebServlet("/RegistreerServlet")
 public class RegistreerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String gebruikersnaam = request.getParameter("gebruikersnaam");
         String wachtwoord = request.getParameter("wachtwoord");
         boolean legeInput = false;
