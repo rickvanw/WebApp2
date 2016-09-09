@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by rickv on 1-9-2016.
@@ -21,23 +22,31 @@ public class RegistreerServlet extends HttpServlet {
         boolean legeInput = false;
         boolean exists = false;
 
+        ArrayList<Gebruiker> user_list = ((ArrayList<Gebruiker>) getServletContext().getAttribute("users"));
+
+
         // Check of gebruikersnaam / wachtwoord velden leeg zijn
         if (gebruikersnaam.isEmpty() || wachtwoord.isEmpty()){
             legeInput = true;
         }else {
 
-            ArrayList<Gebruiker> gebruikers = Model.getInstance().getGebruikers();
 
-            for (int i = 0; i < gebruikers.size(); i++) {
+            for (int i = 0; i < user_list.size(); i++) {
 
-                if (gebruikers.get(i).getGebruikersnaam().equals(gebruikersnaam)) {
+                if (user_list.get(i).getGebruikersnaam().equals(gebruikersnaam)) {
                     exists = true;
+
                 }
             }
 
-            if(exists == false){
+            if(!exists){
                 Gebruiker gebruiker = new Gebruiker(gebruikersnaam, wachtwoord);
-                Model.getInstance().addUser(gebruiker);
+                user_list.add(gebruiker);
+
+                for(Gebruiker user: user_list) {
+                    System.out.println(user.getGebruikersnaam());
+                }
+
             }
         }
 
