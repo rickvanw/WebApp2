@@ -30,10 +30,11 @@ public class SearchRoomServlet extends HttpServlet {
         // Prints all the rooms (toString)
         for (int i = 0; i < kamer_list.size(); i++) {
             if(kamer_list.get(i).getVierkantemeters() == vierkanteMeter) {
-            }   if(kamer_list.get(i).getHuurprijs() <= maximaleHuurprijs) {
-                if(kamer_list.get(i).getPlaats().equalsIgnoreCase(plaats)) {
-                    response.getWriter().println(kamer_list.get(i).toString());
-                    amountResults++;
+                if (kamer_list.get(i).getHuurprijs() <= maximaleHuurprijs) {
+                    if (kamer_list.get(i).getPlaats().equalsIgnoreCase(plaats)) {
+                        response.getWriter().println(kamer_list.get(i).toString());
+                        amountResults++;
+                    }
                 }
             }
         }
