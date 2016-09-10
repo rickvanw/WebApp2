@@ -1,5 +1,4 @@
 import Classes.Gebruiker;
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +25,7 @@ public class LoginServlet extends HttpServlet {
 
         boolean user_authenticated = false;
 
-        for(Gebruiker gebruiker: gebruiker_lijst) {
+        for(Gebruiker gebruiker : gebruiker_lijst) {
             if(gebruiker.getGebruikersnaam().equalsIgnoreCase(gebruikersnaam) && gebruiker.getPassword().equalsIgnoreCase(wachtwoord)) {
                 user_authenticated = true;
                 break;

@@ -1,4 +1,5 @@
-import Classes.Model;
+import Classes.Gebruiker;
+import Classes.Kamer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,11 +16,11 @@ import java.util.ArrayList;
 public class ShowPersonsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        ArrayList gebruikers = Model.getInstance().getGebruikers();
+        ArrayList<Gebruiker> gebruiker_lijst = ((ArrayList<Gebruiker>) getServletContext().getAttribute("users"));
 
         // Prints all the rooms (toString)
-        for (int i = 0; i < gebruikers.size(); i++) {
-            response.getWriter().println(gebruikers.get(i).toString());
+        for (Gebruiker gebruiker: gebruiker_lijst) {
+            response.getWriter().println(gebruiker.toString() + " rol: " + gebruiker.getRol());
         }
 
     }

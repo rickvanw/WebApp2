@@ -28,9 +28,9 @@ public class Listener implements ServletContextListener,
          You can initialize servlet context related data here.
       */
         ArrayList<Gebruiker> user_list = new ArrayList<>();
-        user_list.add(new Gebruiker("wouter", "secret"));
-        user_list.add(new Gebruiker("Henk", "secret"));
-        user_list.add(new Gebruiker("Jan", "secret"));
+        user_list.add(new Gebruiker("wouter", "secret", "huurder"));
+        user_list.add(new Gebruiker("Henk", "secret", "verhuurder"));
+        user_list.add(new Gebruiker("Jan", "secret", "huurder"));
 
         ArrayList<Kamer> kamer_list = new ArrayList<>();
         kamer_list.add(new Kamer(10,10,"hengelo"));

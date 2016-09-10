@@ -5,6 +5,8 @@
     <title>Registreer</title>
 </head>
 <body>
+<h1>Registreer</h1>
+<br>
 <form method="post" action="/RegistreerServlet">
     <p>Gebruikersnaam</p>
     <input type="text" name="gebruikersnaam">
@@ -13,9 +15,8 @@
     <input type="password" name="wachtwoord">
     <input type="submit" value="Registreer">
     <br>
-    <br>
-    <select>
-        <option value="huurder">huurder</option>
+    <select id ="rol" name="rol">
+        <option value="gebruiker">gebruiker</option>
         <option value="verhuurder">verhuurder</option>
     </select>
 </form>

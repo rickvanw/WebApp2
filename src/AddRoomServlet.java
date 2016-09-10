@@ -1,5 +1,4 @@
 import Classes.Kamer;
-import Classes.Model;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

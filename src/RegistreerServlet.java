@@ -1,7 +1,5 @@
 import Classes.Gebruiker;
-import Classes.Model;
 
-import javax.jws.WebParam;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by rickv on 1-9-2016.
@@ -20,6 +17,7 @@ public class RegistreerServlet extends HttpServlet {
 
         String gebruikersnaam = request.getParameter("gebruikersnaam");
         String wachtwoord = request.getParameter("wachtwoord");
+        String rol = request.getParameter("rol");
         boolean legeInput = false;
         boolean exists = false;
 
@@ -41,7 +39,7 @@ public class RegistreerServlet extends HttpServlet {
             }
 
             if(!exists){
-                Gebruiker gebruiker = new Gebruiker(gebruikersnaam, wachtwoord);
+                Gebruiker gebruiker = new Gebruiker(gebruikersnaam, wachtwoord, rol);
                 user_list.add(gebruiker);
 
                 for(Gebruiker user: user_list) {
