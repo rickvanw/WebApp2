@@ -20,13 +20,22 @@ public class ShowPersonsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<Gebruiker> gebruiker_lijst = ((ArrayList<Gebruiker>) getServletContext().getAttribute("users"));
 
-        // Prints all the rooms (toString)
-        response.getWriter().println("Naam                " + " Rol ");
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
 
-        for (Gebruiker gebruiker: gebruiker_lijst) {
-            response.getWriter().println(gebruiker.getGebruikersnaam() + "           " + gebruiker.getRol());
+        out.println("<HTML>");
+        out.println("<HEAD><TITLE>Kamers</TITLE></HEAD>");
+        out.println("<BODY>");
+        out.println("<H3>Verhuurder</H3>");
+        out.println("<br>");
+
+        for(Gebruiker gebruiker: gebruiker_lijst) {
+            out.print(gebruiker.getGebruikersnaam() + "      " + gebruiker.getRol());
+            out.print("<br>");
         }
 
-
+        out.println("<br>");
+        out.println("<a href=\"logout\">Log out</a>");
+        out.println("</BODY></HTML>");
     }
 }

@@ -40,8 +40,9 @@ public class HomeVerhuurderServlet extends HttpServlet {
         out.println("<br>");
         out.println("<a href=\"addroom.html\">Kamer toevoegen</a>");
         out.println("<br>");
+        out.println("<a href=\"ShowPersonsServlet\">Toon alle gebruikers</a>");
+        out.println("<br>");
         out.println("<a href=\"logout\">Log out</a>");
-
         out.println("</BODY></HTML>");
 
     }
