@@ -42,10 +42,6 @@ public class RegistreerServlet extends HttpServlet {
                 Gebruiker gebruiker = new Gebruiker(gebruikersnaam, wachtwoord, rol);
                 user_list.add(gebruiker);
 
-                for(Gebruiker user: user_list) {
-                    System.out.println(user.getGebruikersnaam());
-                }
-
             }
         }
 
@@ -55,7 +51,6 @@ public class RegistreerServlet extends HttpServlet {
         }else if (exists){
             response.sendRedirect("registratiefout.html");
         }else{
-
             response.sendRedirect("login.html");
         }
 

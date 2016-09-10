@@ -21,8 +21,10 @@ public class ShowPersonsServlet extends HttpServlet {
         ArrayList<Gebruiker> gebruiker_lijst = ((ArrayList<Gebruiker>) getServletContext().getAttribute("users"));
 
         // Prints all the rooms (toString)
+        response.getWriter().println("Naam                " + " Rol ");
+
         for (Gebruiker gebruiker: gebruiker_lijst) {
-            response.getWriter().println(gebruiker.toString() + " rol: " + gebruiker.getRol());
+            response.getWriter().println(gebruiker.getGebruikersnaam() + "           " + gebruiker.getRol());
         }
 
 
