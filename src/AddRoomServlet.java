@@ -47,6 +47,7 @@ public class AddRoomServlet extends HttpServlet {
             // Voegt de kamer toe aan het model
             kamer_list.add(kamer);
 
+            // Voegt de kamer toe aan de huidig ingelogde gebruiker
             String username = (String) session.getAttribute("gebruikersnaam");
             for(Gebruiker gebruiker: gebruikers_lijst) {
                 if(gebruiker.getGebruikersnaam().equalsIgnoreCase(username)) {

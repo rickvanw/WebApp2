@@ -36,14 +36,7 @@ public class HomeVerhuurderServlet extends HttpServlet {
         out.println("Uw kamers:");
         out.println("<br>");
 
-//        for(Kamer kamer: kamer_lijst) {
-//
-//            HttpSession session = request.getSession(false);
-//            session.getAttribute("gebruikersnaam");
-//
-//            out.print(kamer.toString());
-//            out.print("<br>");
-//        }
+        // Print de kamers van de ingelogde verhuurder
         HttpSession session = request.getSession(false);
         String username = (String) session.getAttribute("gebruikersnaam");
         for(Gebruiker gebruiker: gebruikers_lijst) {
@@ -56,8 +49,6 @@ public class HomeVerhuurderServlet extends HttpServlet {
                         out.print("<br>");
                     }
                 }
-
-
         }
 
         out.println("<br>");

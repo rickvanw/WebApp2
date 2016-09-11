@@ -27,6 +27,7 @@ public class LoginServlet extends HttpServlet {
 
         boolean user_authenticated = false;
 
+        // Verifieerd de gebuikersgegevens
         for(Gebruiker gebruiker : gebruiker_lijst) {
             if(gebruiker.getGebruikersnaam().equalsIgnoreCase(gebruikersnaam) && gebruiker.getPassword().equalsIgnoreCase(wachtwoord)) {
                 user_authenticated = true;
