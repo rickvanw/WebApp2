@@ -24,9 +24,9 @@ public class ShowPersonsServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         out.println("<HTML>");
-        out.println("<HEAD><TITLE>Kamers</TITLE></HEAD>");
+        out.println("<HEAD><TITLE>Gebruikers</TITLE></HEAD>");
         out.println("<BODY>");
-        out.println("<H3>Verhuurder</H3>");
+        out.println("<H3>Gebruikers</H3>");
         out.println("<br>");
 
         for(Gebruiker gebruiker: gebruiker_lijst) {
