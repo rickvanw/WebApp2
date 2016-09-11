@@ -24,20 +24,26 @@ public class AddRoomServlet extends HttpServlet {
 
         ArrayList<Kamer> kamer_list = ((ArrayList<Kamer>) getServletContext().getAttribute("kamers"));
 
+        if (request.getParameter("vierkantemeters") == null || request.getParameter("vierkantemeters").isEmpty() || request.getParameter("huurprijs") == null || request.getParameter("huurprijs").isEmpty()
+                || request.getParameter("plaats") == null || request.getParameter("plaats").isEmpty()){
+
+            response.getWriter().println("Voer bij elk veld een waarde in");
+
+        }else {
         int vierkanteMeter = Integer.parseInt(request.getParameter("vierkantemeters"));
         double huurprijs = Double.parseDouble(request.getParameter("huurprijs"));
         String plaats = request.getParameter("plaats");
 
-        // Create room with the recieved parameters
-        Kamer kamer = new Kamer(vierkanteMeter, huurprijs, plaats);
+            // Create room with the recieved parameters
+            Kamer kamer = new Kamer(vierkanteMeter, huurprijs, plaats);
 
-        // Add room to Context
-        kamer_list.add(kamer);
+            // Add room to Context
+            kamer_list.add(kamer);
 
-        response.sendRedirect("homeverhuurder");
+            response.sendRedirect("homeverhuurder");
 
 
-
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
