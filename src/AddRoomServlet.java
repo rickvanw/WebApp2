@@ -17,17 +17,18 @@ import java.util.ArrayList;
 public class AddRoomServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // Haalt lijst met kamers op uit model
+        ArrayList<Kamer> kamer_list = ((ArrayList<Kamer>) getServletContext().getAttribute("kamers"));
+        ArrayList<Gebruiker> gebruikers_lijst = ((ArrayList<Gebruiker>) getServletContext().getAttribute("users"));
+
+
         // Checkt of de gebruiker is ingelogd
         HttpSession session = request.getSession(false);
         if(session == null || session.getAttribute("gebruikersnaam") == null) {
             response.sendRedirect("unauthorized.html");
             return;
         }
-
-
-        // Haalt lijst met kamers op uit model
-        ArrayList<Kamer> kamer_list = ((ArrayList<Kamer>) getServletContext().getAttribute("kamers"));
-        ArrayList<Gebruiker> gebruikers_lijst = ((ArrayList<Gebruiker>) getServletContext().getAttribute("users"));
+        String username = (String) session.getAttribute("gebruikersnaam");
 
 
         // Controlleert of alle velden zijn ingevuld
@@ -48,7 +49,6 @@ public class AddRoomServlet extends HttpServlet {
             kamer_list.add(kamer);
 
             // Voegt de kamer toe aan de huidig ingelogde gebruiker
-            String username = (String) session.getAttribute("gebruikersnaam");
             for(Gebruiker gebruiker: gebruikers_lijst) {
                 if(gebruiker.getGebruikersnaam().equalsIgnoreCase(username)) {
                     System.out.println(gebruiker.getGebruikersnaam());
