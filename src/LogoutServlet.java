@@ -17,9 +17,11 @@ public class LogoutServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // Beindigd de sessie
         HttpSession session = request.getSession();
         session.invalidate();
 
+        // Doorgestuurd naar login pagina
         response.sendRedirect("login.html");
 
     }

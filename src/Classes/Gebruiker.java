@@ -1,5 +1,7 @@
 package Classes;
 
+import java.util.ArrayList;
+
 /**
  * Created by rickv on 1-9-2016.
  */
@@ -8,6 +10,7 @@ public class Gebruiker {
     private String gebruikersnaam;
     private String password;
     private String rol;
+    private ArrayList<Kamer> kamers = new ArrayList<>();
 
     public Gebruiker(String gebruikersnaam, String password, String rol) {
         this.gebruikersnaam = gebruikersnaam;
@@ -26,6 +29,14 @@ public class Gebruiker {
 
     public String getRol() {
         return rol;
+    }
+
+    public void addRoomToUser(Kamer kamer) {
+        kamers.add(kamer);
+    }
+
+    public ArrayList<Kamer> getKamers() {
+        return kamers;
     }
 
     @Override

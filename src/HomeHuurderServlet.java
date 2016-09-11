@@ -16,6 +16,7 @@ public class HomeHuurderServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Doorverwijzing naar startpagina voor huurders (WEB-INF)
         getServletContext().getRequestDispatcher("/WEB-INF/homeHuurder.html").forward(request, response);
     }
 }

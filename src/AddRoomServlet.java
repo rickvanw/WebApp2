@@ -1,3 +1,4 @@
+import Classes.Gebruiker;
 import Classes.Kamer;
 
 import javax.servlet.ServletException;
@@ -16,14 +17,20 @@ import java.util.ArrayList;
 public class AddRoomServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // Checkt of de gebruiker is ingelogd
         HttpSession session = request.getSession(false);
-        if(session == null || session.getAttribute("username") == null) {
+        if(session == null || session.getAttribute("gebruikersnaam") == null) {
             response.sendRedirect("unauthorized.html");
             return;
         }
 
-        ArrayList<Kamer> kamer_list = ((ArrayList<Kamer>) getServletContext().getAttribute("kamers"));
 
+        // Haalt lijst met kamers op uit model
+        ArrayList<Kamer> kamer_list = ((ArrayList<Kamer>) getServletContext().getAttribute("kamers"));
+        ArrayList<Gebruiker> gebruikers_lijst = ((ArrayList<Gebruiker>) getServletContext().getAttribute("users"));
+
+
+        // Controlleert of alle velden zijn ingevuld
         if (request.getParameter("vierkantemeters") == null || request.getParameter("vierkantemeters").isEmpty() || request.getParameter("huurprijs") == null || request.getParameter("huurprijs").isEmpty()
                 || request.getParameter("plaats") == null || request.getParameter("plaats").isEmpty()){
 
@@ -34,11 +41,19 @@ public class AddRoomServlet extends HttpServlet {
         double huurprijs = Double.parseDouble(request.getParameter("huurprijs"));
         String plaats = request.getParameter("plaats");
 
-            // Create room with the recieved parameters
+            // Maakt een nieuwe kamer aan met de ingevoerde gegevens
             Kamer kamer = new Kamer(vierkanteMeter, huurprijs, plaats);
 
-            // Add room to Context
+            // Voegt de kamer toe aan het model
             kamer_list.add(kamer);
+
+            String username = (String) session.getAttribute("gebruikersnaam");
+            for(Gebruiker gebruiker: gebruikers_lijst) {
+                if(gebruiker.getGebruikersnaam().equalsIgnoreCase(username)) {
+                    System.out.println(gebruiker.getGebruikersnaam());
+                    gebruiker.addRoomToUser(kamer);
+                }
+            }
 
             response.sendRedirect("homeverhuurder");
 
