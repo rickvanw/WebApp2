@@ -11,14 +11,16 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 
-@WebServlet("/ShowPersonsServlet")
-public class ShowPersonsServlet extends HttpServlet {
+@WebServlet("/homeverhuurder")
+public class HomeVerhuurderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<Gebruiker> gebruiker_lijst = ((ArrayList<Gebruiker>) getServletContext().getAttribute("users"));
+
+        ArrayList<Kamer> kamer_lijst = ((ArrayList<Kamer>) getServletContext().getAttribute("kamers"));
+
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -28,14 +30,20 @@ public class ShowPersonsServlet extends HttpServlet {
         out.println("<BODY>");
         out.println("<H3>Verhuurder</H3>");
         out.println("<br>");
+        out.println("<br>");
 
-        for(Gebruiker gebruiker: gebruiker_lijst) {
-            out.print(gebruiker.getGebruikersnaam() + "      " + gebruiker.getRol());
+        for(Kamer kamer: kamer_lijst) {
+            out.print(kamer.toString());
             out.print("<br>");
         }
 
         out.println("<br>");
+        out.println("<a href=\"addroom.html\">Kamer toevoegen</a>");
+        out.println("<br>");
+        out.println("<a href=\"ShowPersonsServlet\">Toon alle gebruikers</a>");
+        out.println("<br>");
         out.println("<a href=\"logout\">Log out</a>");
         out.println("</BODY></HTML>");
+
     }
 }

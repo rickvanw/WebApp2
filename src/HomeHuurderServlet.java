@@ -9,8 +9,8 @@ import java.io.IOException;
 /**
  * Created by rubenassink on 09-09-16.
  */
-@WebServlet("/home")
-public class HomeServlet extends HttpServlet {
+@WebServlet("/homehuurder")
+public class HomeHuurderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

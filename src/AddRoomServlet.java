@@ -27,7 +27,7 @@ public class AddRoomServlet extends HttpServlet {
         // Add room to Context
         kamer_list.add(kamer);
 
-        response.sendRedirect("huurder.html");
+        response.sendRedirect("homeverhuurder");
 
 
 
